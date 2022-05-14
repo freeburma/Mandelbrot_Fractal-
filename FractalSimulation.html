@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drawing Dots on HTML5 Canvas</title>
+    <!--
+        This is an insparation from MathBloger Youtube explanation. 
+        Ref: https://www.youtube.com/watch?v=qhbuKbxJsk8
+    -->
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="800"></canvas>
+
+    <script>
+
+        
+
+        class Coordinates
+        {
+            constructor(x, y)
+            {
+                this.x = x; 
+                this.y = y; 
+            }   
+        }
+
+        // Define variables 
+        var radius = 300; 
+        var point_size = 2; 
+        var center_x = 400; 
+        var center_y = 400; 
+        var font_size = "20px"; 
+
+        let upperBound = 100; 
+        let distanceBound = 360 / upperBound; 
+        let count = 0; 
+
+        const pointArray = []
+        const testArray = []
+
+        function initPointArray()
+        {
+            for (let i = 0; i < upperBound; i++)
+            {
+                pointArray.push(new Coordinates(0, 0)); 
+            }// end for 
+        }
+
+        var c = document.getElementById('myCanvas'); 
+        var ctx = c.getContext("2d"); 
+
+        document.addEventListener("mousedown", function(e)
+        {
+            console.log(`clicked: [${e.x}, ${e.y}]`);
+        });
+
+        function drawCircle()
+        {
+            ctx.beginPath(); 
+            ctx.arc(center_x, center_y, radius, 0, 2 * Math.PI); 
+            ctx.stroke()
+        }
+
+
+        function drawPoint(angle, distance, label, index)
+        {
+            /// -angle : will go anti-clockwise, positive will go clockwise
+            var x = Math.floor(center_x + radius * Math.cos(-angle * Math.PI/180) * distance);
+            var y = Math.floor(center_y + radius * Math.sin(-angle * Math.PI/180) * distance); 
+
+            let localRadius = Math.floor(Math.min(c.width, c.height) / 2); 
+
+            // console.log(`i: ${angle}, [x,y : ${x}, ${y}]`);
+
+            pointArray[index] = new Coordinates(x, y); 
+            testArray.push(index); 
+
+
+            //// Dots 
+            ctx.beginPath(); 
+            ctx.arc(x, y, point_size, 0, 2 * Math.PI); 
+            ctx.fillStyle = "red"; 
+            ctx.fill(); 
+
+
+            /*
+                            90
+                            |
+                            |
+                            |
+               180 ------------------- 0/360
+                            |
+                            |
+                            |
+                            270
+            **/
+            
+            // ctx.save()
+            var x2 = Math.floor(center_x + (radius + 20) * Math.cos(-angle * Math.PI/180) * distance);
+            var y2 = Math.floor(center_y + (radius + 20) * Math.sin(-angle * Math.PI/180) * distance); 
+
+            ctx.font = font_size; 
+            ctx.fillText(label, x2, y2);
+
+            
+            // if (angle == 0 || angle == 90 || angle == 180 || angle == 270)
+            // {
+            //     ctx.beginPath(); 
+            //     ctx.moveTo(center_x, center_y); 
+            //     ctx.lineTo(x, y)
+            //     ctx.stroke(); 
+            // }
+            // else // Drawing points on every point
+            // {
+            //     ctx.beginPath(); 
+            //     ctx.moveTo(center_x, center_y); 
+            //     ctx.lineTo(x, y)
+            //     ctx.stroke(); 
+            // }
+            
+
+            // ctx.save()
+            // // ctx.fillText(label, x+10, y+10); 
+            // ctx.translate(x+100, y+100); 
+            // ctx.rotate(-angle * Math.PI * distance); 
+            // ctx.restore(); 
+            
+        }
+
+        function ConnectLinesByMultiplier(multiplier)
+        {
+            
+            console.log(testArray); 
+            console.log(pointArray); 
+            for (let i = 1; i < pointArray.length; i++) 
+            {
+                let getNextPoint = i * multiplier 
+
+                if (getNextPoint > 0)
+                {
+                    // console.log(`[${i} => ${getNextPoint}]`);
+                
+                    //// 0=10 in Array Index
+                    if (getNextPoint >= pointArray.length)
+                    {
+                        getNextPoint -= pointArray.length ; 
+                        console.log(`[${i} = ${pointArray[i].x}, ${pointArray[i].y}] => [${getNextPoint} = ${pointArray[getNextPoint].x}, ${pointArray[getNextPoint].y}]`);
+
+                    }
+                    // else 
+                    // {
+                    //     console.log(`[${i} = ${pointArray[i].x}, ${pointArray[i].y}] => [${getNextPoint} = ${pointArray[getNextPoint].x}, ${pointArray[getNextPoint].y}]`);
+
+                    // }
+
+                    ctx.beginPath(); 
+
+                    ctx.moveTo(pointArray[i].x, pointArray[i].y ); 
+                    ctx.lineTo(pointArray[getNextPoint].x, pointArray[getNextPoint].y ); 
+                    ctx.stroke();
+                    ctx.restore()
+                
+
+                }// end if 
+
+                
+            }// end for
+
+            // ctx.beginPath(); 
+
+            // ctx.moveTo(pointArray[0].x, pointArray[0].y ); 
+            // ctx.lineTo(pointArray[1].x, pointArray[1].y); 
+            // ctx.stroke();
+            
+            // ctx.moveTo(pointArray[1].x, pointArray[1].y ); 
+            // ctx.lineTo(pointArray[2].x, pointArray[2].y); 
+            // ctx.stroke();
+
+           
+            
+
+        }// end ConnectLinesByMultiplier()
+
+        //// Execution
+        drawCircle(); 
+    
+        // drawPoint(0, 1, "A"); 
+        // drawPoint(90, 1.5, "B"); 
+        // drawPoint(180, 1, "C"); 
+        // drawPoint(45, 0.5, "D"); 
+
+        
+        initPointArray(); 
+
+        for (let i = 0; i < 360; i+= distanceBound)
+        {
+            drawPoint(i, 1, `${ count }`, count); 
+            count ++; 
+
+
+        }// end for 
+
+        ConnectLinesByMultiplier(2); 
+
+
+
+    </script>
+</body>
+</html>
