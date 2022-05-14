@@ -14,7 +14,7 @@ Project Estimate Duration:
 
 #### Reconmmand to watch YouTube channel 
 
-[![](https://www.youtube.com/watch?v=qhbuKbxJsk8)](https://www.youtube.com/watch?v=qhbuKbxJsk8 "Everything Is AWESOME")
+![https://www.youtube.com/watch?v=qhbuKbxJsk8](https://www.youtube.com/watch?v=qhbuKbxJsk8 "Everything Is AWESOME")
 
 
 
