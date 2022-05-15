@@ -198,23 +198,30 @@ class Coordinates
         DrawDots(200)
         ConnectLinesByMultiplier(2); // Connecting dots by multiplier 
 
+        let automateFractalTimer; 
+
         function DrawFractal(isAutomate=false)
         {
             ResetCanvasAndVariables(); 
 
 
-            let numDots = document.querySelector('#numOfDots_Id').value; 
-            
+            let numDotsID = document.querySelector('#numOfDots_Id'); 
+            let numDots = numDotsID.value; 
             if (numDots <= 0 )
             {
-                numDots = 200; 
+
+                //// Try with the following comments 
+                // numDots = 1000; // is very interesting
+                // numDots = 500; 
+                numDots = 400; 
             }
 
-            let multiplier = document.querySelector('#multiplier_Id').value; 
+            let multiplierID = document.querySelector('#multiplier_Id'); 
+            let multiplier = multiplierID.value; 
 
-            if (multiplier == null || multiplier <= 1 )
+            if (multiplier == null)
             {
-                multiplier = 2; 
+                multiplier = 0; 
             }
 
             DrawCircle(); 
@@ -224,7 +231,7 @@ class Coordinates
 
             if (isAutomate)
             {
-                setInterval(() => 
+                automateFractalTimer = setInterval(() => 
                 {
                     ResetCanvasAndVariables(); 
 
@@ -240,7 +247,7 @@ class Coordinates
                     //// Resetting multipliers
                     if (multiplier == 100)
                     {
-                        multiplier = 2; 
+                        multiplier = 0; 
                     }
                 }, 1000); 
         
@@ -249,12 +256,22 @@ class Coordinates
             {
 
                 console.log(`Form: ${numDots}, ${multiplier}`);
+                CancelTimer(); 
 
                 ConnectLinesByMultiplier(multiplier); // Connecting dots by multiplier 
             }// end if -> isAutomate
 
 
+            numDotsID.value = ''; 
+            multiplierID.value = ''; 
+
+            numDotsID.focus(); 
 
         }// end DrawFractal() 
+
+        function CancelTimer() 
+        {
+            clearInterval(automateFractalTimer); 
+        }// end CancelTimer()
 
 
