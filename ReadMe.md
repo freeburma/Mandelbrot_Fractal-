@@ -14,5 +14,9 @@ Project Estimate Duration:
 
 #### Reconmmand to watch YouTube channel 
 
-![https://www.youtube.com/watch?v=qhbuKbxJsk8](https://www.youtube.com/watch?v=qhbuKbxJsk8 "Everything Is AWESOME")
+![https://www.youtube.com/watch?v=qhbuKbxJsk8](https://www.youtube.com/watch?v=qhbuKbxJsk8 "MathBloger Youtube Channel")
+
+#### Most of the Drawing the dots around the circle is inherited from StackOverflow sites: 
+Ref: https://stackoverflow.com/questions/32681610/drawing-point-on-circle
+    
 

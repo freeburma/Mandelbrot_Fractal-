@@ -6,8 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drawing Dots on HTML5 Canvas</title>
     <!--
-        This is an insparation from MathBloger Youtube explanation. 
+        This is an inspiration from Mathbloger Youtube explanation. 
         Ref: https://www.youtube.com/watch?v=qhbuKbxJsk8
+
+        Most of the Drawing the dots around the circle is inherited from StackOverflow sites: 
+        Ref: https://stackoverflow.com/questions/32681610/drawing-point-on-circle
     -->
 </head>
 <body>
@@ -26,7 +29,8 @@
             }   
         }
 
-        // Define variables 
+        //// ========================== Define variables ==========================
+        //// Circle values
         var radius = 300; 
         var point_size = 2; 
         var center_x = 400; 
@@ -34,51 +38,55 @@
         var font_size = "20px"; 
 
         let upperBound = 100; 
-        let distanceBound = 360 / upperBound; 
-        let count = 0; 
+        let distanceBound = 360 / upperBound; // Calculating equal space 
+        let labelName = 0; 
 
         const pointArray = []
-        const testArray = []
 
-        function initPointArray()
-        {
-            for (let i = 0; i < upperBound; i++)
-            {
-                pointArray.push(new Coordinates(0, 0)); 
-            }// end for 
-        }
-
+        //// Canvas 
         var c = document.getElementById('myCanvas'); 
         var ctx = c.getContext("2d"); 
 
+        //// ========================== Define variables ==========================
+
+
+        //// Mouse click event to get the current cursor's coordinate (x, y) positions
         document.addEventListener("mousedown", function(e)
         {
             console.log(`clicked: [${e.x}, ${e.y}]`);
         });
 
+        /**
+            Drawing Circle. 
+        */
         function drawCircle()
         {
             ctx.beginPath(); 
             ctx.arc(center_x, center_y, radius, 0, 2 * Math.PI); 
             ctx.stroke()
-        }
+        }// end drawCircle()
 
-
-        function drawPoint(angle, distance, label, index)
+        /**
+            drawPoint() will draw a point from "Circle" diameter. 
+            angle: Double    : The direction of circle. Positive value: Clockwise, Negative value: Counter clockwise
+            diameter: Double : The distance from center point to circumference 
+            label: String    : Label name for dots. 
+         */
+        function drawPoint(angle, diameter, label)
         {
             /// -angle : will go anti-clockwise, positive will go clockwise
-            var x = Math.floor(center_x + radius * Math.cos(-angle * Math.PI/180) * distance);
-            var y = Math.floor(center_y + radius * Math.sin(-angle * Math.PI/180) * distance); 
+            var x = Math.floor(center_x + radius * Math.cos(-angle * Math.PI/180) * diameter);
+            var y = Math.floor(center_y + radius * Math.sin(-angle * Math.PI/180) * diameter); 
 
             let localRadius = Math.floor(Math.min(c.width, c.height) / 2); 
 
             // console.log(`i: ${angle}, [x,y : ${x}, ${y}]`);
 
-            pointArray[index] = new Coordinates(x, y); 
-            testArray.push(index); 
+            // pointArray[index] = new Coordinates(x, y); 
+            pointArray.push(new Coordinates(x, y)); 
 
 
-            //// Dots 
+            //// Drawing Dots on our circle circumference 
             ctx.beginPath(); 
             ctx.arc(x, y, point_size, 0, 2 * Math.PI); 
             ctx.fillStyle = "red"; 
@@ -86,6 +94,10 @@
 
 
             /*
+            The starting position is at 0deg. 
+            Angle : + value clockwise 
+            Angle : - value anti-clockwise 
+
                             90
                             |
                             |
@@ -97,43 +109,26 @@
                             270
             **/
             
-            // ctx.save()
-            var x2 = Math.floor(center_x + (radius + 20) * Math.cos(-angle * Math.PI/180) * distance);
-            var y2 = Math.floor(center_y + (radius + 20) * Math.sin(-angle * Math.PI/180) * distance); 
+            //// Labels' x and y coordinates 
+            var x2 = Math.floor(center_x + (radius + 20) * Math.cos(-angle * Math.PI/180) * diameter);
+            var y2 = Math.floor(center_y + (radius + 20) * Math.sin(-angle * Math.PI/180) * diameter); 
 
             ctx.font = font_size; 
             ctx.fillText(label, x2, y2);
 
-            
-            // if (angle == 0 || angle == 90 || angle == 180 || angle == 270)
-            // {
-            //     ctx.beginPath(); 
-            //     ctx.moveTo(center_x, center_y); 
-            //     ctx.lineTo(x, y)
-            //     ctx.stroke(); 
-            // }
-            // else // Drawing points on every point
-            // {
-            //     ctx.beginPath(); 
-            //     ctx.moveTo(center_x, center_y); 
-            //     ctx.lineTo(x, y)
-            //     ctx.stroke(); 
-            // }
-            
+        }// end drawPoint()
 
-            // ctx.save()
-            // // ctx.fillText(label, x+10, y+10); 
-            // ctx.translate(x+100, y+100); 
-            // ctx.rotate(-angle * Math.PI * distance); 
-            // ctx.restore(); 
+        /**
+            ConnectLinesByMultiplier method is an algorithm which will join dot to dot 
+            according its calculated outcome. 
+            multiplier: Double -> must increase by multiplier += 0.1 to see the result
             
-        }
-
+        */
         function ConnectLinesByMultiplier(multiplier)
         {
             
-            console.log(testArray); 
             console.log(pointArray); 
+
             for (let i = 1; i < pointArray.length; i++) 
             {
                 let getNextPoint = i * multiplier 
@@ -168,6 +163,8 @@
                 
             }// end for
 
+
+            //// Testing codes before we get it from For Loop. 
             // ctx.beginPath(); 
 
             // ctx.moveTo(pointArray[0].x, pointArray[0].y ); 
@@ -192,17 +189,17 @@
         // drawPoint(45, 0.5, "D"); 
 
         
-        initPointArray(); 
-
+        //// Drawing points around circle's circumference with equal space. 
         for (let i = 0; i < 360; i+= distanceBound)
         {
-            drawPoint(i, 1, `${ count }`, count); 
-            count ++; 
+            drawPoint(i, 1, `${ labelName }`); 
+            labelName ++; 
 
 
         }// end for 
 
-        ConnectLinesByMultiplier(2); 
+        
+        ConnectLinesByMultiplier(2); // Connecting dots by multiplier 
 
 
 
