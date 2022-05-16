@@ -1,6 +1,8 @@
 ## Fractal Simulation 
 
-This is my personal challenge which inspired by "Times Tables, Mandelbrot and the Heart of Mathematics" by Mathloger tutorial. I watched his tutorials multiple times and tried to understand. 
+This is my personal challenge which inspired by "Times Tables, Mandelbrot and the Heart of Mathematics" by Mathologer tutorial. I watched his tutorials multiple times and tried to understand. 
+
+*** This project started from scratch. 
 
 I challenge myself by using JavaScript on HTML-5 Canvas. There are a lot challenging to 
 understand the basic geometry and applying its knowledge on real life which is hard. 
