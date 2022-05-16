@@ -22,7 +22,7 @@ Project Estimate Duration:
 
 ### How to Run Project: 
 <ol>
-<li>Open the file called <strong>"FractalSimulation.html"</strong> on your favorite browser (such as FireFox, Chorome or Edge)</li>
+<li>Open the file called <strong>"FractalSimulation.html"</strong> on your favorite browser (such as FireFox, Chorome or Edge). No webserver required. </li>
 
 <br />
 
