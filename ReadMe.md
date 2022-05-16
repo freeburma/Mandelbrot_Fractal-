@@ -11,9 +11,9 @@ During my development, I need to go back and watch the tutorial again and again 
 <br/>
 
 1st: 12:00 Hours  
-<br/>
-
 2st: 16:00 Hours (*** including bug fixes)
+
+Total: Around <strong>28 Hours</strong>
 <br/>
 
 #### Sample Screenshots
