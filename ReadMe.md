@@ -9,6 +9,8 @@ During my development, I need to go back and watch the tutorial again and again 
 
 Project Estimate Duration: 
 1st: 12:00 Hours  
+<br/>
+2st: 14:00 Hours (*** including bug fixes)
 
 ![Alt text](./ScreenShot.png)
 
