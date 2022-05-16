@@ -10,18 +10,18 @@ During my development, I need to go back and watch the tutorial again and again 
 Project Estimate Duration: 
 1st: 12:00 Hours  
 <br/>
-2st: 14:00 Hours (*** including bug fixes)
+2st: 16:00 Hours (*** including bug fixes)
 
 ![Alt text](./ScreenShot.png)
 
 ### How to Run Project: 
 <ol>
-<li>Open the file called "FractalSimulation.html" on your favorite browser (such as FireFox, Chorome or Edge)</li>
+<li>Open the file called <strong>"FractalSimulation.html"</strong> on your favorite browser (such as FireFox, Chorome or Edge)</li>
 
 <br />
 
 <li>
-To make a custom drawing, enter the info as follow: 
+<strong>To make a custom drawing, enter the info as follow: </strong>
 <ol>
     <li>Number of Dots around Circumference: 200</li>
     <li>Multiplier: 200</li>
@@ -30,7 +30,7 @@ To make a custom drawing, enter the info as follow:
 </li>
 
 <li>
-Or, to automate drawing: 
+Or, <strong>to automate drawing:</strong>
 <ol>
     <li>Number of Dots around Circumference: 200</li>
     <li>Multiplier: 200</li>
@@ -42,12 +42,12 @@ Or, to automate drawing:
 <li>
 Or
 <ol>
-    <li>Just Click "Automate Draw" button which will set all the require values for you.</li>
+    <li>Just Click <strong>"Automate Draw"</strong> button which will set all the require values for you.</li>
 </ol>
 </li>
 
 <li>
-Click "Stop Timer" button to stop the timer. Then you can redraw it again.
+Click <strong>"Stop Timer"</strong> button to stop the timer. Then you can redraw it again.
 </li>
 
 </ol>
