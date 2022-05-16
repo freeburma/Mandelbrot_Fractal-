@@ -4,7 +4,7 @@ This is my personal challenge which inspired by "Times Tables, Mandelbrot and th
 
 *** This project started from scratch. 
 
-I challenge myself by using JavaScript on HTML-5 Canvas. There are a lot challenging to 
+I challenge myself by using JavaScript and CSS on HTML-5 Canvas. There are a lot challenging to 
 understand the basic geometry and applying its knowledge on real life which is hard. 
 
 During my development, I need to go back and watch the tutorial again and again to verify my code. 
