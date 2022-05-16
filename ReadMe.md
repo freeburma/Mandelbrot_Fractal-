@@ -13,6 +13,12 @@ Project Estimate Duration:
 2st: 16:00 Hours (*** including bug fixes)
 
 ![Alt text](./ScreenShot.png)
+<br/>
+
+![Alt text](./screenshot_2.png)
+<br/>
+
+![Alt text](./screenshot_3.png)
 
 ### How to Run Project: 
 <ol>
