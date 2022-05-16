@@ -7,11 +7,16 @@ understand the basic geometry and applying its knowledge on real life which is h
 
 During my development, I need to go back and watch the tutorial again and again to verify my code. 
 
-Project Estimate Duration: 
+<strong>Project Estimate Duration:</strong>
+<br/>
+
 1st: 12:00 Hours  
 <br/>
-2st: 16:00 Hours (*** including bug fixes)
 
+2st: 16:00 Hours (*** including bug fixes)
+<br/>
+
+#### Sample Screenshots
 ![Alt text](./ScreenShot.png)
 <br/>
 
