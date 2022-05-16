@@ -287,14 +287,14 @@ class Coordinates
 
                 ConnectLinesByMultiplier(multiplier); // Connecting dots by multiplier 
 
-                
+                multiplier = parseFloat(Number(multiplier));  
                 displayCurrentStepSpanId.innerHTML = multiplier.toFixed(1); 
             }// end if -> isAutomate
 
 
-            numDotsID.value = ''; 
-            multiplierID.value = ''; 
-            speedInMilliSecondID.value = ''; 
+            // numDotsID.value = ''; 
+            // multiplierID.value = ''; 
+            // speedInMilliSecondID.value = ''; 
 
             numDotsID.focus(); 
 
