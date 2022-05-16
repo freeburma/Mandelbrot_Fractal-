@@ -15,7 +15,8 @@ During my development, I need to go back and watch the tutorial again and again 
 1st: 12:00 Hours  
 2st: 16:00 Hours (*** including bug fixes)
 
-Total: Around <strong>28 Hours</strong>
+Total: Around <strong>28 Hours</strong> 
+<br/>
 Project Finished <strong>May 16, 2022 04:00pm</strong>
 <br/>
 
