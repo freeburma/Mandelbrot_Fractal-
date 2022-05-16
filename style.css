@@ -47,11 +47,17 @@
 
 
 .sideBar h3 
+, .sideBar h4
 {
     color: #fff;
     font-size: 24px;
     letter-spacing: 1px;
     
+}
+
+.sideBar h4
+{
+    font-size: 20px;
 }
 
 .sideBar p 
@@ -63,4 +69,24 @@
 .sideBar label 
 {
     color: #fff;
+}
+
+hr 
+{
+    color: #fff;
+}
+
+
+/* =================== executionContainer ===============*/
+.executionContainer *
+{
+    color: #fff;
+
+    font-size: 12px;
+    letter-spacing: 2px;
+}
+
+.executionContainer label
+{
+    width: 120px;
 }

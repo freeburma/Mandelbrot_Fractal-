@@ -50,13 +50,11 @@ class Coordinates
             diameter: Double : The distance from center point to circumference 
             label: String    : Label name for dots. 
          */
-        function drawPoint(angle, diameter, label)
+        function drawPoint(angle, diameter, label, numOfDots)
         {
             /// -angle : will go anti-clockwise, positive will go clockwise
             var x = Math.floor(center_x + radius * Math.cos(-angle * Math.PI/180) * diameter);
             var y = Math.floor(center_y + radius * Math.sin(-angle * Math.PI/180) * diameter); 
-
-            let localRadius = Math.floor(Math.min(canvas.width, canvas.height) / 2); 
 
             // console.log(`i: ${angle}, [x,y : ${x}, ${y}]`);
 
@@ -87,12 +85,16 @@ class Coordinates
                             270
             **/
             
-            //// Labels' x and y coordinates 
-            var x2 = Math.floor(center_x + (radius + 20) * Math.cos(-angle * Math.PI/180) * diameter);
-            var y2 = Math.floor(center_y + (radius + 20) * Math.sin(-angle * Math.PI/180) * diameter); 
+            //// Display number of dots if num of dots is less than 200. 
+            if (numOfDots <= 200)
+            {
+                //// Labels' x and y coordinates 
+                var x2 = Math.floor(center_x + (radius + 20) * Math.cos(-angle * Math.PI/180) * diameter);
+                var y2 = Math.floor(center_y + (radius + 20) * Math.sin(-angle * Math.PI/180) * diameter); 
 
-            canvasContext.font = font_size; 
-            canvasContext.fillText(label, x2, y2);
+                canvasContext.font = font_size; 
+                canvasContext.fillText(label, x2, y2);
+            }// end if 
 
         }// end drawPoint()
 
@@ -170,7 +172,7 @@ class Coordinates
 
             for (let i = 0; i < 360; i+= equalDistanceDots)
             {
-                drawPoint(i, 1, `${ labelNameCount }`); 
+                drawPoint(i, 1, `${ labelNameCount }`, numOfDots); 
                 labelNameCount ++; 
 
 
@@ -204,6 +206,7 @@ class Coordinates
         function DrawFractal(isAutomate=false)
         {
             ResetCanvasAndVariables(); 
+            CancelTimer(); 
 
 
             let numDotsID = document.querySelector('#numOfDots_Id'); 
@@ -219,15 +222,31 @@ class Coordinates
 
             let multiplierID = document.querySelector('#multiplier_Id'); 
             let multiplier = multiplierID.value; 
+            
+            let speedInMilliSecondID = document.querySelector('#speedInMilliSecond_Id'); 
+            let speedInMilliSecond = speedInMilliSecondID.value; 
+
+            let displayNumOfDotsSpanID = document.querySelector('#displayNumOfDotsSpanID'); 
+            let displayCurrentSpeedSpanId = document.querySelector('#displayCurrentSpeedSpanId'); 
+            let displayCurrentStepSpanId = document.querySelector('#displayCurrentStepSpanId'); 
+
 
             if (multiplier == null)
             {
                 multiplier = 0; 
             }
 
+            if (speedInMilliSecond == null || speedInMilliSecond <= 0)
+            {
+                speedInMilliSecond = 500; 
+            }
+
             DrawCircle(); 
             DrawDots(numDots);
 
+            //// Getting the Info 
+            displayNumOfDotsSpanID.innerHTML = numDots; 
+            displayCurrentSpeedSpanId.innerHTML = speedInMilliSecond + " ms"; 
 
 
             if (isAutomate)
@@ -239,17 +258,7 @@ class Coordinates
 
                     // multiplier ++;
                     
-                    multiplier = parseFloat(multiplier + 0.1);  
-                     
-
-                    // let i = multiplier;
-                    // while (i < 2) 
-                    // {
-
-                    
-                    // i = parseFloat((i + 0.1).toFixed(1));
-                    // console.log(i);
-                    // }
+                    multiplier = parseFloat(Number(multiplier) + 0.1);  
 
                     ResetCanvasAndVariables(); 
 
@@ -257,6 +266,8 @@ class Coordinates
                     DrawDots(numDots);
                     ConnectLinesByMultiplier(multiplier.toFixed(1)); // Connecting dots by multiplier 
 
+                    //// Displaying Current Step on Span
+                    displayCurrentStepSpanId.innerHTML = multiplier.toFixed(1); 
 
                     console.log(`Multiplier: ${multiplier.toFixed(1)}, type: ${typeof(multiplier)}`);
                     
@@ -265,21 +276,25 @@ class Coordinates
                     {
                         multiplier = 0; 
                     }
-                }, 10); 
+                }, speedInMilliSecond); 
         
             }
             else
             {
 
                 console.log(`Form: ${numDots}, ${multiplier}`);
-                CancelTimer(); 
+                // CancelTimer(); 
 
                 ConnectLinesByMultiplier(multiplier); // Connecting dots by multiplier 
+
+                
+                displayCurrentStepSpanId.innerHTML = multiplier.toFixed(1); 
             }// end if -> isAutomate
 
 
             numDotsID.value = ''; 
             multiplierID.value = ''; 
+            speedInMilliSecondID.value = ''; 
 
             numDotsID.focus(); 
 
@@ -287,7 +302,8 @@ class Coordinates
 
         function CancelTimer() 
         {
-            clearInterval(automateFractalTimer); 
+            if (automateFractalTimer != null)
+                clearInterval(automateFractalTimer); 
         }// end CancelTimer()
 
 

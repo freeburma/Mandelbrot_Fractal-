@@ -34,19 +34,41 @@
             <form >
                 <div class="mb-3 mt-3">
                     <label for="numOfDots">Number of Dots around Circumference:</label>
-                    <input type="text" id="numOfDots_Id" name="numOfDots"  placeholder="Enter the number of dots" />
+                    <input type="number" id="numOfDots_Id" name="numOfDots"  placeholder="Enter the number of dots" />
                 </div>
 
                 <div class="mb-3 mt-3">
                     <label for="numOfDots">Multiplier:</label>
-                    <input type="text" name="multiplier" id="multiplier_Id" placeholder="Enter the multiplier "  />
+                    <input type="number" name="multiplier" id="multiplier_Id" placeholder="Enter the multiplier "  />
+                </div>
+
+                <div class="mb-3 mt-3">
+                    <label for="speedInMilliSecond">Speed in Milliseconds :</label>
+                    <input type="number" name="speedInMilliSecond" id="speedInMilliSecond_Id" placeholder="Enter the multiplier "  />
                 </div>
 
             </form>
 
-            <button id="automateButton" class="btn btn-primary" onclick="DrawFractal(true)">Automate Draw</button>
-            <button id="drawCircleButton" class="btn btn-primary" onclick="DrawFractal(false)">Draw</button>
-            <button id="cancelTimer" class="btn btn-success" onclick="CancelTimer()">Stop Timer</button>
+            <button id="automateButton" class="mb-3 mt-3 btn btn-primary" onclick="DrawFractal(true)">Automate Draw</button>
+            <button id="drawCircleButton" class="mb-3 mt-3 btn btn-primary" onclick="DrawFractal(false)">Draw</button>
+            <button id="cancelTimer" class="mb-3 mt-3 btn btn-success" onclick="CancelTimer()">Stop Timer</button>
+
+            <hr />
+            <h4>Execution</h4>
+            <div class="executionContainer">
+                <div class="mb-3 mt-3">
+                    <label>Num of dots :</label>  <span id="displayNumOfDotsSpanID"></span>
+                    <br />
+
+                    <label>Speed       :</label> <span id="displayCurrentSpeedSpanId"></span>
+                    <br />
+
+                    <label>Current Step:</label> <span id="displayCurrentStepSpanId"></span>
+
+                </div>
+                
+            </div>
+            
 
         </div>
     </div>
