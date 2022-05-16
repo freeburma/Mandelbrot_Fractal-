@@ -34,17 +34,17 @@
             <form >
                 <div class="mb-3 mt-3">
                     <label for="numOfDots">Number of Dots around Circumference:</label>
-                    <input type="number" id="numOfDots_Id" name="numOfDots"  placeholder="Enter the number of dots" />
+                    <input type="number" id="numOfDots_Id" name="numOfDots"  placeholder="Enter the number of dots" step="1" onclick="DrawFractal(false)" />
+                </div>               
+
+                <div class="mb-3 mt-3">
+                    <label for="speedInMilliSecond">Speed in Milliseconds :</label>
+                    <input type="number" name="speedInMilliSecond" id="speedInMilliSecond_Id" placeholder="Enter the multiplier" step="10" />
                 </div>
 
                 <div class="mb-3 mt-3">
                     <label for="numOfDots">Multiplier:</label>
-                    <input type="number" name="multiplier" id="multiplier_Id" placeholder="Enter the multiplier "  />
-                </div>
-
-                <div class="mb-3 mt-3">
-                    <label for="speedInMilliSecond">Speed in Milliseconds :</label>
-                    <input type="number" name="speedInMilliSecond" id="speedInMilliSecond_Id" placeholder="Enter the multiplier "  />
+                    <input type="number" name="multiplier" id="multiplier_Id" placeholder="Enter the multiplier" step="0.1" onclick="DrawFractal(false)"/>
                 </div>
 
             </form>
@@ -57,7 +57,7 @@
             <h4>Execution</h4>
             <div class="executionContainer">
                 <div class="mb-3 mt-3">
-                    <label>Num of dots :</label>  <span id="displayNumOfDotsSpanID"></span>
+                    <label>Num of dots :</label>  <span id="displayNumOfDotsSpanID" ></span>
                     <br />
 
                     <label>Speed       :</label> <span id="displayCurrentSpeedSpanId"></span>

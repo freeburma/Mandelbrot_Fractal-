@@ -268,8 +268,9 @@ class Coordinates
 
                     //// Displaying Current Step on Span
                     displayCurrentStepSpanId.innerHTML = multiplier.toFixed(1); 
+                    multiplierID.value = multiplier.toFixed(1); 
 
-                    console.log(`Multiplier: ${multiplier.toFixed(1)}, type: ${typeof(multiplier)}`);
+                    // console.log(`Multiplier: ${multiplier.toFixed(1)}, type: ${typeof(multiplier)}`);
                     
                     //// Resetting multipliers
                     if (multiplier == 100)
