@@ -27,7 +27,7 @@ Project Finished <strong>May 16, 2022 04:00pm</strong>
 ![Alt text](./screenshot_2.png)
 <br/>
 
-![Alt text](./screenshot_3.png)
+![Alt text](./screenshot_3_1.png)
 
 ### How to Run Project: 
 <ol>
