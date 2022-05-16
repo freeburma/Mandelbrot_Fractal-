@@ -107,9 +107,10 @@ class Coordinates
             
             // console.log(pointArray); 
 
-            for (let i = 1; i < pointArray.length; i++) 
+            for (let i = 1; i < pointArray.length; i++) // Increment by 1
             {
-                let getNextPoint = (i * multiplier) % pointArray.length; 
+            
+                let getNextPoint = Math.floor((i * multiplier) % pointArray.length); 
 
                 if (getNextPoint > 0)
                 {
@@ -231,25 +232,40 @@ class Coordinates
 
             if (isAutomate)
             {
+                
+
                 automateFractalTimer = setInterval(() => 
                 {
-                    ResetCanvasAndVariables(); 
 
-                    multiplier ++; 
+                    // multiplier ++;
+                    
+                    multiplier = parseFloat(multiplier + 0.1);  
+                     
+
+                    // let i = multiplier;
+                    // while (i < 2) 
+                    // {
+
+                    
+                    // i = parseFloat((i + 0.1).toFixed(1));
+                    // console.log(i);
+                    // }
+
+                    ResetCanvasAndVariables(); 
 
                     DrawCircle(); 
                     DrawDots(numDots);
-                    ConnectLinesByMultiplier(multiplier); // Connecting dots by multiplier 
+                    ConnectLinesByMultiplier(multiplier.toFixed(1)); // Connecting dots by multiplier 
 
 
-                    console.log(`Multiplier: ${multiplier}`);
+                    console.log(`Multiplier: ${multiplier.toFixed(1)}, type: ${typeof(multiplier)}`);
                     
                     //// Resetting multipliers
                     if (multiplier == 100)
                     {
                         multiplier = 0; 
                     }
-                }, 1000); 
+                }, 10); 
         
             }
             else
