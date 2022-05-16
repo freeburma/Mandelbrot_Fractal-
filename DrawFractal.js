@@ -297,7 +297,7 @@ class Coordinates
             // multiplierID.value = ''; 
             // speedInMilliSecondID.value = ''; 
 
-            numDotsID.focus(); 
+            // numDotsID.focus(); 
 
         }// end DrawFractal() 
 
