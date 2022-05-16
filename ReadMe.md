@@ -75,3 +75,10 @@ https://www.youtube.com/watch?v=qhbuKbxJsk8 "MathBloger Youtube Channel
 Ref: https://stackoverflow.com/questions/32681610/drawing-point-on-circle
     
 
+### LICENSE (Apache 2 or Later)
+You may use this code in your personal, commercial, educational projects with free of charge, however, 
+if you have used any of the code from my source code either in whole or partial, you must include My Github's USER NAME and Source Code links on both in source code and at frontend pages. 
+
+I include some of the source code from StackOverFlow website. YOU ARE REQUIRED TO CHECK ITS TERMS AND POLICIES BEFORE YOU PUBLISH. 
+
+SOFTWARE IS NOT GUARANTEE AND AS IS. YOU MAY FIND BUGS AND OTHER COMPUTATIONAL ISSUES. 
