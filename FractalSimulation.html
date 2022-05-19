@@ -24,7 +24,7 @@
     <div class="myContainer">
 
         <div class="canvasContainer">
-            <canvas id="myCanvas" width="800" height="800"></canvas>
+            <canvas id="myCanvas" width="700" height="700"></canvas>
         </div>
 
         <div class="sideBar">
@@ -32,35 +32,37 @@
             <p>Enter the Require Information</p>
 
             <form >
+
+                <div class="mb-3 mt-3">
+                    <label for="speedInMilliSecond">Speed in Milliseconds :</label>
+                    <input type="number" name="speedInMilliSecond" id="speedInMilliSecond_Id" placeholder="Enter the Speed in Milliseconds" step="10" />
+                </div>
+
                 <div class="mb-3 mt-3">
                     <label for="numOfDots">Number of Dots around Circumference:</label>
                     <input type="number" id="numOfDots_Id" name="numOfDots"  placeholder="Enter the number of dots" step="1" onclick="DrawFractal(false)" />
                 </div>               
 
                 <div class="mb-3 mt-3">
-                    <label for="speedInMilliSecond">Speed in Milliseconds :</label>
-                    <input type="number" name="speedInMilliSecond" id="speedInMilliSecond_Id" placeholder="Enter the multiplier" step="10" />
-                </div>
-
-                <div class="mb-3 mt-3">
-                    <label for="numOfDots">Multiplier:</label>
+                    <label for="multiplier">Multiplier:</label>
                     <input type="number" name="multiplier" id="multiplier_Id" placeholder="Enter the multiplier" step="0.1" onclick="DrawFractal(false)"/>
                 </div>
 
             </form>
 
-            <button id="automateButton" class="mb-3 mt-3 btn btn-primary" onclick="DrawFractal(true)">Automate Draw</button>
-            <button id="drawCircleButton" class="mb-3 mt-3 btn btn-primary" onclick="DrawFractal(false)">Draw</button>
-            <button id="cancelTimer" class="mb-3 mt-3 btn btn-success" onclick="CancelTimer()">Stop Timer</button>
+            <button id="automateButton" class="mb-3 mt-3 btn btn-primary" >Automate Draw</button>
+            <button id="drawCircleButton" class="mb-3 mt-3 btn btn-primary" >Draw</button>
+            <button id="cancelTimer" class="mb-3 mt-3 btn btn-success" >Stop Timer</button>
 
             <hr />
             <h4>Execution</h4>
             <div class="executionContainer">
                 <div class="mb-3 mt-3">
-                    <label>Num of dots :</label>  <span id="displayNumOfDotsSpanID" ></span>
+
+                    <label>Speed:</label> <span id="displayCurrentSpeedSpanId"></span>
                     <br />
 
-                    <label>Speed       :</label> <span id="displayCurrentSpeedSpanId"></span>
+                    <label>Num of dots:</label>  <span id="displayNumOfDotsSpanID" ></span>
                     <br />
 
                     <label>Multiplier:</label> <span id="displayCurrentStepSpanId"></span>
